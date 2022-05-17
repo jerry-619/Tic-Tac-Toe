@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+  --primaryColor: #192A32;
+  --primaryColor-dark: #0e171b;
+  --secondaryColor: #30505f;
+  --greyColor: #dad8d8;
+  --greyColor-dark: #628594;
+  --crossColor: #09ff00;
+  --circleColor: #ff0505;
+  --fontStyle: 'Roboto', sans-serif;
+}
+copyright {
+  color: rgb(240, 240, 240);
+  font-size: 10.6pt;
+  padding-top: 3%;
+  text-align: justify;
+  font-family: "Courier New";
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--fontStyle);
+  user-select: none;
+  font-weight: bold;
+}
+
+body {
+  background-color: var(--primaryColor);
+}
+
+.App {
+  position: relative;
+  display: block;
+  padding: 30px;
+}
+
+.intro {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+}
+
+.turn_select {
+  position: relative;
+  display: block;
+  margin: auto;
+  width: 50%;
+  margin: 3vw auto;
+  padding: 20px 5vw;
+  background-color: var(--secondaryColor);
+  border-radius: 10px;
+}
+
+.turn_select h3 {
+  text-transform: uppercase;
+  color: var(--greyColor);
+  font-size: calc(12px + 0.5vw);
+  letter-spacing: 2px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.turn_label {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.turn_btn {
+  position: relative;
+  margin: auto;
+  background-color: var(--primaryColor);
+  width: 100%;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.turn_label input {
+  display: none;
+}
+
+.turn_mark {
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.turn_label input:checked~.turn_mark {
+  background-color: var(--greyColor);
+}
+
+.turn_select p {
+  text-transform: uppercase;
+  color: var(--greyColor-dark);
+  font-size: calc(10px + 0.3vw);
+  letter-spacing: 2px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.game_type {
+  position: relative;
+  display: block;
+  width: 50%;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  position: relative;
+  display: block;
+  text-transform: uppercase;
+  border: none;
+  font-size: calc(12px + 0.3vw);
+  /* width: 100%; */
+  transform: translateY(0px);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.game_type button {
+  width: 100%;
+  padding: 20px 60px;
+}
+
+.cpu_btn {
+  margin-bottom: 30px;
+  background-color: var(--circleColor);
+  box-shadow: 0px 5px 1px 1px rgb(199, 199, 198)
+}
+
+.player_btn {
+  background-color: #1fb8ff;
+  box-shadow: 0px 5px 1px 1px rgb(8, 93, 100)
+}
+
+button:hover {
+  transform: translateY(5px);
+  filter: brightness(1.1);
+  box-shadow: none;
+}
+
+.board {
+  position: relative;
+  margin: 40px auto 0;
+  width: 40%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 3;
+  align-items: center;
+}
+
+.board_header {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-area: 1 / 1 / 1 / -1;
+}
+
+.board_mark_turn {
+  position: relative;
+  display: block;
+  margin-right: auto;
+}
+
+.board_turn_btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 90%;
+  margin: auto;
+  padding: 10px 2vw;
+  border-radius: 10px;
+  background-color: var(--secondaryColor);
+  box-shadow: 0px 5px 1px 0px var(--primaryColor-dark);
+}
+
+.board_turn_btn span {
+  position: relative;
+  color: var(--greyColor);
+  margin-left: 10px;
+  font-size: calc(12px + 0.5vw);
+  text-transform: uppercase;
+}
+
+.board_reset_btn {
+  position: relative;
+  display: block;
+  background-color: var(--greyColor);
+  margin-left: auto;
+  padding: 8px 8px 4px 8px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 1px 0px var(--secondaryColor);
+}
+
+.board_slot_container {
+  display: grid;
+  grid-area: 2 / 1 / 2 / -1;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2vw;
+  padding: 20px 0;
+  width: 100%;
+}
+
+.board_slot {
+  position: relative;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 1px 0px var(--primaryColor-dark);
+}
+
+.board_slot.default {
+  background-color: var(--secondaryColor);
+}
+
+.board_slot.win___cross {
+  background-color: var(--crossColor);
+}
+
+.board_slot.win___circle {
+  background-color: var(--circleColor);
+}
+
+.board_score___your,
+.board_score___draw,
+.board_score___opponent {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 92%;
+  padding: 15px 0;
+  border-radius: 10px;
+  text-align: center;
+  font-size: calc(12px + 0.5vw);
+  text-transform: uppercase;
+  color: var(--primaryColor);
+}
+
+.board_score___your {
+  background-color: var(--crossColor);
+  margin-right: auto;
+}
+
+.board_score___draw {
+  margin: auto;
+  background-color: var(--greyColor);
+}
+
+.board_score___opponent {
+  margin-left: auto;
+  background-color: var(--circleColor);
+}
+
+.board_score___your span,
+.board_score___opponent span {
+  margin-left: 10px;
+}
+
+.board_score___your p,
+.board_score___draw p,
+.board_score___opponent p {
+  flex: 100%;
+  padding-top: 10px;
+}
+
+@media only screen and (max-width: 1050px) {
+  .board {
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+
+  .turn_select,
+  .game_type {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .board {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .board {
+    width: 100%;
+  }
+
+  .board_slot {
+    padding: 10px 0;
+  }
+
+  .turn_select,
+  .game_type {
+    width: 95%;
+  }
+
+
+}
